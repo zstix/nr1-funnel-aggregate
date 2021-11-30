@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardBody, HeadingText, NrqlQuery, Spinner } from 'nr1';
+import { NrqlQuery, Spinner } from 'nr1';
+
+import EmptyState from '../../src/components/EmptyState';
+import ErrorState from '../../src/components/ErrorState';
 
 export default class FunnelAggregateVisualization extends React.Component {
   static propTypes = {
@@ -27,7 +30,7 @@ export default class FunnelAggregateVisualization extends React.Component {
           }
 
           if (error) {
-            return <ErrorState />;
+            return <ErrorState message="Error executing NRQL query" />;
           }
 
           console.log('NRQL results', data);
@@ -38,39 +41,3 @@ export default class FunnelAggregateVisualization extends React.Component {
     )
   }
 }
-
-const EmptyState = () => (
-  <Card className="EmptyState">
-    <CardBody className="EmptyState-cardBody">
-      <HeadingText
-        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-        type={HeadingText.TYPE.HEADING_3}
-      >
-        Please provide at least one NRQL query & account ID pair
-      </HeadingText>
-      <HeadingText
-        spacingType={[HeadingText.SPACING_TYPE.MEDIUM]}
-        type={HeadingText.TYPE.HEADING_4}
-      >
-        An example NRQL query you can try is:
-      </HeadingText>
-      <code>
-        FROM NrUsage SELECT sum(usage) FACET metric SINCE 1 week ago
-      </code>
-    </CardBody>
-  </Card>
-);
-
-const ErrorState = () => (
-  <Card className="ErrorState">
-    <CardBody className="ErrorState-cardBody">
-      <HeadingText
-        className="ErrorState-headingText"
-        spacingType={[HeadingText.SPACING_TYPE.LARGE]}
-        type={HeadingText.TYPE.HEADING_3}
-      >
-        Oops! Something went wrong.
-      </HeadingText>
-    </CardBody>
-  </Card>
-);
