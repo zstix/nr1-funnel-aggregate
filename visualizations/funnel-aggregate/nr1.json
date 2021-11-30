@@ -1,0 +1,20 @@
+{
+  "schemaType": "VISUALIZATION",
+  "id": "funnel-aggregate",
+  "displayName": "Funnel Aggregate",
+  "description": "",
+  "configuration": [
+    {
+      "name": "accountId",
+      "title": "Account ID",
+      "description": "Account ID to be associated with the query",
+      "type": "account-id"
+    },
+    {
+      "name": "query",
+      "title": "Funnel NRQL Query",
+      "description": "NRQL query for Funnel",
+      "type": "nrql"
+    }
+  ]
+}
