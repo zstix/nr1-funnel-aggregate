@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card, CardBody, HeadingText } from 'nr1';
 
 const EmptyState = () => (
   <Card className="EmptyState">

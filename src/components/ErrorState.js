@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import { Card, CardBody, HeadingText } from 'nr1';
 
 const ErrorState = ({ message }) => (
   <Card className="ErrorState">
