@@ -11,6 +11,12 @@
       "type": "account-id"
     },
     {
+      "name": "label",
+      "title": "Label",
+      "description": "Chart label",
+      "type": "string"
+    },
+    {
       "name": "query",
       "title": "Funnel NRQL Query",
       "description": "NRQL query for Funnel",

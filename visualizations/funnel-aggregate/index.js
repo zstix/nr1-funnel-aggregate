@@ -4,6 +4,7 @@ import { NrqlQuery, Spinner } from 'nr1';
 
 import EmptyState from '../../src/components/EmptyState';
 import ErrorState from '../../src/components/ErrorState';
+import BillboardAggregate from '../../src/components/BillboardAggregate';
 
 /**
  * Given a response, return the correct chart type. For simple funnel queries
@@ -11,13 +12,12 @@ import ErrorState from '../../src/components/ErrorState';
  * chart.
  *
  * @param {{ data: Object[] }} data NRQL response data.
- * @returns {JSX.Element} Chart component or error.
+ * @param {string} label the label to display in the chart (if applicable).
  */
-const getChartForData = ({ data }) => {
+const getChartForData = ({ data }, label) => {
   switch (true) {
     case data.length === 1:
-      console.log('billboard with', data[0]);
-      return <div>Billboard</div>;
+      return <BillboardAggregate data={data[0]} label={label} />
 
     case data.length > 1:
       console.log('line chart with', data);
@@ -29,7 +29,13 @@ const getChartForData = ({ data }) => {
   };
 };
 
-const FunnelAggregateVisualization = ({ accountId, query }) => {
+/**
+ * @param {Object} props
+ * @param {number} props.accountId
+ * @param {string} props.query
+ * @param {string} props.label
+ */
+const FunnelAggregateVisualization = ({ accountId, query, label }) => {
   if (!accountId || !query) {
     return <EmptyState />;
   }
@@ -49,10 +55,7 @@ const FunnelAggregateVisualization = ({ accountId, query }) => {
           return <ErrorState message="Error executing NRQL query." />;
         }
 
-        // TODO: remove this
-        console.log('NRQL results', data[0]);
-
-        return getChartForData(data[0]);
+        return getChartForData(data[0], label);
       }}
     </NrqlQuery>
   )
@@ -61,6 +64,7 @@ const FunnelAggregateVisualization = ({ accountId, query }) => {
 FunnelAggregateVisualization.propTypes = {
   accountId: PropTypes.number,
   query: PropTypes.string,
+  label: PropTypes.string,
 };
 
 export default FunnelAggregateVisualization;
