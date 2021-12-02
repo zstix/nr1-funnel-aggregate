@@ -57,8 +57,6 @@ const FunnelAggregateVisualization = ({ accountId, query, label }) => {
           return <ErrorState message="Error executing NRQL query." />;
         }
 
-        console.log('NRQL results', data);
-
         return getChartForData(data[0], label);
       }}
     </NrqlQuery>
