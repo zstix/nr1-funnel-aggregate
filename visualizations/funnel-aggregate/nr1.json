@@ -2,7 +2,7 @@
   "schemaType": "VISUALIZATION",
   "id": "funnel-aggregate",
   "displayName": "Funnel Aggregate",
-  "description": "",
+  "description": "A custom visualization for the results of a NRQL funnel query",
   "configuration": [
     {
       "name": "accountId",
