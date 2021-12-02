@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { LineChart } from 'nr1';
 
+import { getLastFunnelValue } from '../utils';
+
 const COLOR = '#a35ebf';
 
 /**
- * @todo Determine a more reliable way to find the last step in the funnel?
  * @todo Better x axis labels
  *
  * @param {Object} props
@@ -14,7 +15,7 @@ const COLOR = '#a35ebf';
  */
 const LineChartAggregate = ({ data: funnelData, label }) => {
   const chartData = funnelData.map((timeEntry, index) => ({
-    y: Object.values(timeEntry).sort()[0],
+    y: getLastFunnelValue(timeEntry),
     x: index + 1,
   }));
 
