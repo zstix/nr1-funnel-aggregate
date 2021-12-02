@@ -5,11 +5,14 @@ import { NrqlQuery, Spinner } from 'nr1';
 import EmptyState from '../../src/components/EmptyState';
 import ErrorState from '../../src/components/ErrorState';
 import BillboardAggregate from '../../src/components/BillboardAggregate';
+import LineChartAggregate from '../../src/components/LineChartAggregate';
 
 /**
  * Given a response, return the correct chart type. For simple funnel queries
  * this is a billboard chart. For TIMESERIES funnel queries, this is a line
  * chart.
+ *
+ * @todo Make less assumptions about the shape of `data`.
  *
  * @param {{ data: Object[] }} data NRQL response data.
  * @param {string} label the label to display in the chart (if applicable).
@@ -20,8 +23,7 @@ const getChartForData = ({ data }, label) => {
       return <BillboardAggregate data={data[0]} label={label} />
 
     case data.length > 1:
-      console.log('line chart with', data);
-      return <div>Line</div>;
+      return <LineChartAggregate data={data} label={label} />
 
     default:
       console.error(e);
