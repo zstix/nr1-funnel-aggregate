@@ -1,6 +1,6 @@
 {
-    "schemaType": "NERDPACK",
-    "id": "ab5050be-b385-433e-acb5-8758775e3704",
-    "displayName": "Funnel Aggregate",
-    "description": "Funnel Aggregate visualization"
+  "schemaType": "NERDPACK",
+  "id": "fa440bb7-7db0-4536-8063-847618ebc0f2",
+  "displayName": "Funnel Aggregate",
+  "description": "Funnel Aggregate visualization"
 }
